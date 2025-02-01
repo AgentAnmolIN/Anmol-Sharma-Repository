@@ -1,6 +1,3 @@
-Here’s a refined and enhanced summary of your text:  
-
----
 
 # **Advanced Physical Design Using OpenLane/Sky130**  
 ## **Section 1: Inception of Open-Source EDA, OpenLANE, and Sky130 PDK**  
@@ -115,4 +112,75 @@ Strive chipsets are RISC-V-based open-source ASICs designed using OpenLANE, show
 1. Run "picorav32a" synthesis using OpenLane and generat output.
 2. Calculate flop ration.
 3. Run "picorav32a" synsthesis using OpenLane and generat output.
-4. Go to Openlane Directory.
+### **1. Go to Openlane Directory.**
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
+```
+### **2. Run the command 'Docker'**
+
+```bash
+docker
+```
+### **3. Going to- interactive mode**
+```tcl
+# By using this command we can go to interactive mode
+./flow.tcl -interactive
+
+#input the required packages using the command given below:
+package require openlane 0.9
+
+
+#The OpenLANE flow is now set up to handle any design. Before running a specific design like 'picorv32a', we first need to create important files and directories to prepare the environment using this command
+
+prep -design picorv32a
+
+#Finally run synthesis using this command
+run_synthesis
+
+```
+![Screenshot 2025-02-01 184339](https://github.com/user-attachments/assets/c16f3ee2-09d0-46b5-8323-ddd324194c41)
+
+![Screenshot 2025-02-01 184555](https://github.com/user-attachments/assets/5a528e39-ac19-4f76-8da9-a1a2c2e01066)
+
+![Screenshot 2025-02-01 184339](https://github.com/user-attachments/assets/2e5fe5f0-32f6-4370-8a40-8f9dea3cc57a)
+
+
+### **2. Calculating the flop ratio:**
+
+```math
+Flop\ Ratio = \frac{Number\ of\ D\ Flip\ Flops}{Total\ Number\ of\ Cells}
+```
+```math
+Percentage\ of\ D Flip Flops's = Flop\ Ratio * 100
+```
+
+
+```tcl
+# As earlier you had run a synthesis, they all are stored in a specific folder and it isn't necessary to run the sinthesis again and again
+
+#so """"""""""""""I'll tell you a short cut """"""""", as given below:
+
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/12-08_10-49/reports/synthesis
+
+ls -ltr
+
+less yosys_2.stat.rpt
+
+#**AND HERE YOU GO **
+
+#****TOP SECRET**** CONFIDENTIAL!
+```
+
+### D FLIP FLOP ###
+![Screenshot 2025-02-01 205046](https://github.com/user-attachments/assets/119389c1-931f-4646-89fa-6e1cc0ca4216)
+### TOTAL NUMBER OF CELLS ###
+![Screenshot 2025-02-01 205111](https://github.com/user-attachments/assets/46ac26ac-b5be-4db8-aff7-f75106034c2f)
+
+### Calculation of Flop Ratio and D Flip Flop's % ###
+
+```math
+Flop\ Ratio = \frac{1613}{14876} = 0.1084296853993009
+```
+```math
+Percentage\ of\ D Flip Flops's = 0.1084296853993009 * 100 = 10.84296853993009\ \%
+```
