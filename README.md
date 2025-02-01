@@ -375,12 +375,12 @@ This section explains the basics of floorplanning in digital chip design. We’l
 #### Section 2 Tasks
 
 1. Run 'picorv32a' floorplan using OpenLANE flow and get the Output
-2. Calculate die area
+2. Calculate the area of a die
 3. Load floorplan in Magic tool and explore it
 4. Run 'picorv32a' design placement using OpenLANE flow and get the output.
 5. Load placement in Magic tool and explore it
 
-1. Run 'picorv32a' floorplan using OpenLANE flow and get the Output
+>>> Run 'picorv32a' floorplan using OpenLANE flow and get the Output
 
 1. Go to Openlane Directory
 
@@ -412,5 +412,52 @@ run_synthesis
 run_floorplan
 ```
 
+### **Snapsohots Of Running A Floor Plan** ###
+START:-
+![Screenshot 2025-02-01 222014](https://github.com/user-attachments/assets/73bb781f-edcb-449b-b7b5-d014d981d87c)
+END:-
+![Screenshot 2025-02-01 222122](https://github.com/user-attachments/assets/bef95e49-ea19-435a-bc7a-3a63abc31a32)
 
+Screenshots of running floorplan
 
+![Screenshot (75)](https://github.com/user-attachments/assets/fdc9d5b6-16d1-4bea-933b-57ced5f91c0d)
+
+![Screenshot (76)](https://github.com/user-attachments/assets/b95558ff-26fe-4f47-927e-a1d4a164ce69)
+
+## 2. Calculate die area ##
+
+#### **Screenshot of contents in Floorplan(YELLOW BOX SHOWS THE DIE WIDTH AND HEIGHT)** ####
+
+![Screenshot 2025-02-01 222632](https://github.com/user-attachments/assets/33b0dcb0-0cae-4a7e-98ad-8cc07ebd8a9b)
+
+```math
+1000\ Unit\ Distance = 1\ Micron
+```
+```math
+Die\ width\ in\ unit\ distance = 660685 - 0 = 660685
+```
+```math
+Die\ height\ in\ unit\ distance = 671405 - 0 = 671405
+```
+```math
+Distance\ in\ microns = \frac{Value\ in\ Unit\ Distance}{1000}
+```
+```math
+Die\ width\ in\ microns = \frac{660685}{1000} = 660.685\ Microns
+```
+```math
+Die\ height\ in\ microns = \frac{671405}{1000} = 671.405\ Microns
+```
+```math
+Area\ of\ die\ in\ microns = 660.685 * 671.405 = 443587.212425\ Square\ Microns
+```
+
+### **Commands to run floorplan in magic** ###
+
+```bash
+# Change directory to floorplan
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/01-02_05-07/results/floorplan/
+
+# Command to run the floorplan in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+```
