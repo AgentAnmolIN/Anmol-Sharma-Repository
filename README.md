@@ -184,3 +184,233 @@ Flop\ Ratio = \frac{1613}{14876} = 0.1084296853993009
 ```math
 Percentage\ of\ D Flip Flops's = 0.1084296853993009 * 100 = 10.84296853993009\ \%
 ```
+# **Section 2: Good vs. Bad Floorplans and Library Cells**
+
+## **Overview**
+This section explains the basics of floorplanning in digital chip design. We’ll cover things like how much space is used (utilization factor), the shape of the layout (aspect ratio), pre-placed cells, power planning, and pin placement. We’ll also introduce library cells and how they are tested.
+
+---
+
+## **Utilization Factor and Aspect Ratio**
+
+### **Utilization Factor**
+- This tells us how much of the chip’s area is filled with logic cells, power connections, and other parts.
+- A **high utilization factor** means space is used well, but too much usage can lead to problems like overheating and congestion.
+
+### **Aspect Ratio**
+- This is the ratio of a chip’s width to its height.
+- A **balanced aspect ratio** helps with:
+  - Easier routing of wires.
+  - Even power distribution.
+  - Better heat management.
+- A **skewed aspect ratio** can cause longer wire connections and more power consumption.
+
+---
+
+## **What Are Pre-Placed Cells?**
+- These are certain cells placed on the chip before the main design process starts.
+- They help with:
+  - **Clock distribution** (making sure timing is correct).
+  - **Power delivery** (ensuring power reaches all parts evenly).
+  - **Reset logic** (keeping everything stable when the chip starts up).
+- Placing these ahead of time makes the design more efficient.
+
+---
+
+## **What Are Decoupling Capacitors (Decaps)?**
+- These are small components placed between power and ground.
+- They help by:
+  - Preventing voltage drops.
+  - Filtering out unwanted noise.
+  - Keeping signals stable.
+
+---
+
+## **Power Planning**
+- This makes sure power is delivered properly across the chip.
+- It includes:
+  - **Designing power grids** to avoid voltage drops.
+  - **Managing voltage drops** to keep signals reliable.
+  - **Using decoupling capacitors** to reduce noise.
+- Good power planning helps the chip run smoothly.
+
+---
+
+## **Pin Placement and Blocked Areas**
+
+### **Pin Placement**
+- This determines where **input/output (I/O) pins** go.
+- Good pin placement reduces:
+  - Wire length.
+  - Congestion.
+  - Timing delays.
+
+### **Blocked Areas for Cell Placement**
+- Some areas are off-limits for standard cells due to design needs.
+- Reasons include:
+  - Pre-placed cells.
+  - Reserved regions (like power grids or clock trees).
+- Managing these blockages improves routing and timing.
+
+---
+
+## **Mapping the Netlist and Initial Placement**
+
+### **Netlist Binding**
+- This means matching the logical design (netlist) to actual physical cells.
+- Cells are chosen based on:
+  - **Their function** (AND, OR, Flip-Flops, etc.).
+  - **Performance needs** (speed, power, size).
+
+### **Initial Placement**
+- This step places cells on the chip based on how they connect.
+- The goal is to **reduce wire length and congestion** while keeping timing in check.
+
+---
+
+## **Optimizing Placement Using Wire Length and Capacitance**
+
+### **Wire Length Optimization**
+- Shorter wires mean less resistance and delay.
+- This helps signals move faster.
+
+### **Capacitance Optimization**
+- Reducing capacitance prevents unwanted interference between wires.
+- This improves speed and lowers power use.
+- Adjusting placement can help optimize performance.
+
+---
+
+## **Final Placement Optimization**
+- Uses special techniques to improve design:
+  - **Timing optimization:** Making sure signals arrive on time.
+  - **Power optimization:** Reducing power use while keeping performance.
+  - **Area optimization:** Using space efficiently for lower cost.
+
+---
+
+## **Why Do We Need Libraries and Characterization?**
+
+### **Libraries**
+- These are collections of pre-made circuit components (like AND gates, OR gates, Flip-Flops, etc.).
+- They are tested for:
+  - **Speed** (how fast they work).
+  - **Power use**.
+  - **Size**.
+  - **Voltage needs**.
+
+### **Characterization**
+- This is the process of testing how well these components work.
+- It helps with:
+  - **Timing analysis** (checking signal delays).
+  - **Power estimation** (predicting power use).
+  - **Better placement and routing**.
+
+---
+
+## **Avoiding Congestion Using RePlAce**
+- A tool that helps balance cell placement.
+- Prevents crowded areas that make routing harder.
+- Helps improve timing and overall performance.
+
+---
+
+## **What Goes Into Cell Design?**
+- **Design Specifications:** What the cell needs to do.
+- **Process Technology:** Defines transistor sizes and wiring layers.
+- **Electrical Characteristics:** Includes power and timing rules.
+- **Library Constraints:** Makes sure the cell follows design rules.
+
+### **Steps in Circuit Design**
+1. **Logic Design:** Defines what the cell does (e.g., AND, OR, XOR).
+2. **Schematic Design:** Creates the circuit using transistors.
+3. **Simulation & Verification:** Tests if it works correctly.
+4. **Optimization:** Adjusts transistor size and placement for better performance.
+
+### **Steps in Layout Design**
+1. **Transistor Layout:** Arranges transistors and wires.
+2. **Routing:** Connects metal layers properly.
+3. **Design Rule Checking (DRC):** Ensures it can be manufactured.
+4. **Layout vs. Schematic (LVS):** Confirms the layout matches the original design.
+
+---
+
+## **How Are Library Cells Tested?**
+
+### **Simulation Setup**
+- Uses tools to model how the cell works under different conditions.
+
+### **Timing Analysis**
+- Checks delays (how long signals take to travel).
+
+### **Power Analysis**
+- Measures power use in different situations.
+
+### **Testing for Process Variations**
+- Looks at how temperature, voltage, and manufacturing differences affect performance.
+- Makes sure the cell works in all conditions.
+
+### **Characterization Data**
+- Stores timing, power, and noise data for use in chip design.
+
+---
+
+## **Important Timing Terms**
+- **Vih (Input High Voltage):** The lowest voltage needed for a logic HIGH.
+- **Vil (Input Low Voltage):** The highest voltage allowed for a logic LOW.
+- **Voh (Output High Voltage):** The minimum output voltage for HIGH.
+- **Vol (Output Low Voltage):** The maximum output voltage for LOW.
+- **These values ensure signals are understood correctly.**
+
+---
+
+## **Propagation Delay and Signal Transition Time**
+- **Propagation Delay:** Time it takes for a signal to move from input to output.
+  - **tPLH:** Time for a LOW-to-HIGH change.
+  - **tPHL:** Time for a HIGH-to-LOW change.
+- **Transition Time:** How long it takes for a signal to move from 10% to 90% of its voltage.
+- Faster transitions improve circuit speed and efficiency.
+
+---
+#### Section 2 Tasks
+
+1. Run 'picorv32a' floorplan using OpenLANE flow and get the Output
+2. Calculate die area
+3. Load floorplan in Magic tool and explore it
+4. Run 'picorv32a' design placement using OpenLANE flow and get the output.
+5. Load placement in Magic tool and explore it
+
+1. Run 'picorv32a' floorplan using OpenLANE flow and get the Output
+
+1. Go to Openlane Directory
+
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
+```
+2. Run the command Docker
+
+```bash
+docker
+```
+3. Go to interactive mode
+```tcl
+#Use this command to go to interactive mode
+./flow.tcl -interactive
+
+#input required packages using this command
+package require openlane 0.9
+
+
+#The OpenLANE flow is now set up to handle any design. Before running a specific design like 'picorv32a', we first need to create important files and directories to prepare the environment using this command
+
+prep -design picorv32a
+
+#run synthesis using this command
+run_synthesis
+
+# Now we can run floorplan
+run_floorplan
+```
+
+
+
