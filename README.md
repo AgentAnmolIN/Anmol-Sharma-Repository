@@ -418,11 +418,6 @@ START:-
 END:-
 ![Screenshot 2025-02-01 222122](https://github.com/user-attachments/assets/bef95e49-ea19-435a-bc7a-3a63abc31a32)
 
-Screenshots of running floorplan
-
-![Screenshot (75)](https://github.com/user-attachments/assets/fdc9d5b6-16d1-4bea-933b-57ced5f91c0d)
-
-![Screenshot (76)](https://github.com/user-attachments/assets/b95558ff-26fe-4f47-927e-a1d4a164ce69)
 
 ## 2. Calculate die area ##
 
